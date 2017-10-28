@@ -1,0 +1,656 @@
+[
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column propertyzoningdesc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "propertyzoningdesc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "PDR17000*",
+          "PDR1-7000",
+          "PDR1 7000",
+          "PDR17000"
+        ],
+        "to": "PDR17000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCA22*",
+          "LCA 22*",
+          "LCA22"
+        ],
+        "to": "LCA22*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR110000*",
+          "LCR110000-",
+          "LCR111000*"
+        ],
+        "to": "LCR110000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LRR 2 *",
+          "LRR2*"
+        ],
+        "to": "LRR 2 *"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LFR115000*",
+          "LFR115000-"
+        ],
+        "to": "LFR115000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR115000-",
+          "LCR115000*"
+        ],
+        "to": "LCR115000-"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "GLR1-R*",
+          "GLR1R*"
+        ],
+        "to": "GLR1-R*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "RPRS13000*",
+          "RPRS13000-"
+        ],
+        "to": "RPRS13000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LHRA1*",
+          "LHRA1"
+        ],
+        "to": "LHRA1*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR140000*",
+          "LCR140000&"
+        ],
+        "to": "LCR140000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "POR31000*",
+          "POR310000*"
+        ],
+        "to": "POR31000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "CCR3*",
+          "CC-R3"
+        ],
+        "to": "CCR3*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR120000*",
+          "LCR120000-"
+        ],
+        "to": "LCR120000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR15000*",
+          "LCR1 5000"
+        ],
+        "to": "LCR15000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR1*",
+          "LCR1"
+        ],
+        "to": "LCR1*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR2*",
+          "LCR2"
+        ],
+        "to": "LCR2*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "RBR-3",
+          "RBR3*"
+        ],
+        "to": "RBR-3"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LRR1-10000",
+          "LRR110000*"
+        ],
+        "to": "LRR1-10000"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LRR7000*",
+          "LRR7000"
+        ],
+        "to": "LRR7000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "DOR15000*",
+          "DOR1500*"
+        ],
+        "to": "DOR15000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "CORL*",
+          "CORL"
+        ],
+        "to": "CORL*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "PDA2*",
+          "PDA2"
+        ],
+        "to": "PDA2*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCRA7OOO",
+          "LCRA7OOO*"
+        ],
+        "to": "LCRA7OOO"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "RPRS20000&",
+          "RPRS20000*"
+        ],
+        "to": "RPRS20000&"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "BFA1*",
+          "BF A1"
+        ],
+        "to": "BFA1*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LBPD1",
+          "LBPD1*"
+        ],
+        "to": "LBPD1"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "SHR4*",
+          "SHR4"
+        ],
+        "to": "SHR4*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LBCB",
+          "LBCB*"
+        ],
+        "to": "LBCB"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "RBR-2",
+          "RBR2*"
+        ],
+        "to": "RBR-2"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "PDSP",
+          "PDSP*"
+        ],
+        "to": "PDSP"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCR1-1",
+          "LCR11*"
+        ],
+        "to": "LCR1-1"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LMPUD*",
+          "LM PUD*"
+        ],
+        "to": "LMPUD*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "EMR1",
+          "EMR1*"
+        ],
+        "to": "EMR1"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCRA30000*",
+          "LCRA 30000"
+        ],
+        "to": "LCRA30000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "PDR3*",
+          "PDR3"
+        ],
+        "to": "PDR3*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "PDR1*",
+          "PDR1"
+        ],
+        "to": "PDR1*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCC3*",
+          "LCC3"
+        ],
+        "to": "LCC3*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCA1*",
+          "LCA1"
+        ],
+        "to": "LCA1*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "WHC2",
+          "WHC2*"
+        ],
+        "to": "WHC2"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NOR1*",
+          "NOR1"
+        ],
+        "to": "NOR1*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "BHR475",
+          "BHR475*"
+        ],
+        "to": "BHR475"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "SDSF10000*",
+          "SDSF10000-"
+        ],
+        "to": "SDSF10000*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "SOR109",
+          "SOR109*"
+        ],
+        "to": "SOR109"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "TCR172",
+          "TCR172*"
+        ],
+        "to": "TCR172"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LCA11*",
+          "LCA11"
+        ],
+        "to": "LCA11*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "BFCG",
+          "BFCG*"
+        ],
+        "to": "BFCG"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "SFR2*",
+          "SFR2"
+        ],
+        "to": "SFR2*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "HAR3*",
+          "HAR3"
+        ],
+        "to": "HAR3*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "PSR*",
+          "PSR-"
+        ],
+        "to": "PSR*"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "PSC-",
+          "PSC"
+        ],
+        "to": "PSC-"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "LBR4N",
+          "LBR4N*"
+        ],
+        "to": "LBR4N"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column transactiondate using expression grel:toString(datePart(value.toDate('yyyy-mm-dd'),\"weekday\"))+', '+ value.toDate('yyyy-mm-dd').toString('MMMM')+' '+value.toDate('yyyy-mm-dd').toString('dd')+', '+value.toDate('yyyy-mm-dd').toString('yyyy')",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "transactiondate",
+    "expression": "grel:toString(datePart(value.toDate('yyyy-mm-dd'),\"weekday\"))+', '+ value.toDate('yyyy-mm-dd').toString('MMMM')+' '+value.toDate('yyyy-mm-dd').toString('dd')+', '+value.toDate('yyyy-mm-dd').toString('yyyy')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column nominal data at index 1 based on column parcelid using expression grel:' '",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "nominal data",
+    "columnInsertIndex": 1,
+    "baseColumnName": "parcelid",
+    "expression": "grel:' '",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column ordinal data at index 2 based on column nominal data using expression grel:\" \"",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "ordinal data",
+    "columnInsertIndex": 2,
+    "baseColumnName": "nominal data",
+    "expression": "grel:\" \"",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column bedroomflag at index 10 based on column bedroomcnt using expression grel:toNumber(value) > 3",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "bedroomflag",
+    "columnInsertIndex": 10,
+    "baseColumnName": "bedroomcnt",
+    "expression": "grel:toNumber(value) > 3",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column pooltypeid10 using expression grel:0",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "isBlank(value)",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "pooltypeid10",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "pooltypeid10"
+        }
+      ]
+    },
+    "columnName": "pooltypeid10",
+    "expression": "grel:0",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column pooltypeid2 using expression grel:0",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "isBlank(value)",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "pooltypeid2",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "pooltypeid2"
+        }
+      ]
+    },
+    "columnName": "pooltypeid2",
+    "expression": "grel:0",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column pooltypeid7 using expression grel:0",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "isBlank(value)",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "pooltypeid7",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "pooltypeid7"
+        }
+      ]
+    },
+    "columnName": "pooltypeid7",
+    "expression": "grel:0",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column pooltypeid 2/7/10 at index 35 based on column pooltypeid10 using expression grel:cells[\"pooltypeid2\"].value + ' / ' + cells[\"pooltypeid7\"].value + \n' / ' + cells[\"pooltypeid10\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "pooltypeid 2/7/10",
+    "columnInsertIndex": 35,
+    "baseColumnName": "pooltypeid10",
+    "expression": "grel:cells[\"pooltypeid2\"].value + ' / ' + cells[\"pooltypeid7\"].value + \n' / ' + cells[\"pooltypeid10\"].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column pooltypeid10",
+    "columnName": "pooltypeid10"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column pooltypeid7",
+    "columnName": "pooltypeid7"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column pooltypeid2",
+    "columnName": "pooltypeid2"
+  }
+]

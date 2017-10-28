@@ -1,0 +1,9 @@
+
+Average node degree: 2.138
+Diameter of the graph: 4 
+Average path length: 2.93
+
+Average node degree: this shows the number of direct onnections one node has to other nodes.
+Diameter of the graph maybe means the largest distance of all pairs of nodes, it can show us the maximum number of connectiongs required to traverse the graph.
+Average path length means the average distance of all pairs of nodes. I think this metrics can show the intimacy of the groups of the people, the smaller the number is, the shorter distance the nodes are.
+

@@ -1,0 +1,42 @@
+c.
+i.  909 unique values for the Propertyzoningdesc columns
+
+ii. Text transform on 10000 cells in column transactiondate: grel:toString(datePart(value.toDate('yyyy-mm-dd'),"weekday"))+', '+ value.toDate('yyyy-mm-dd').toString('MMMM')+' '+value.toDate('yyyy-mm-dd').toString('dd')+', '+value.toDate('yyyy-mm-dd').toString('yyyy')
+
+iii.
+ nominal data: 
+'airconditioningtypeid'
+'architecturalstyletypeid'
+'buildingclasstypeid'
+'decktypeid'
+'fips'
+'hashottuborspa'	
+'heatingorsystemtypeid'
+'pooltypeid10'
+'pooltypeid2'
+'pooltypeid7'
+'propertycountylandusecode'
+'parcelid'
+'transactionadate'
+'hashottuborspa' 
+'heatingorsystemtypeid' 
+'propertylandusetypeid'
+'propertyzoningdesc'
+'rawcensustractandblock'
+'regionidcounty'
+'regionidcity'
+'regionidzip'
+'regionidneighborhood'
+'storytypeid'
+'typeconstructiontypeid'
+
+ordinal data:
+'buildingqualitytypeid'
+
+v.
+ value.replace("*", " ")
+
+vi.
+ I use the "Facet by blank" and "transform" feature to change those null value to 0 and I merge the column"pooltypeid2", "pooltypeid7", "pooltypeid10" to a new column called "pooltypeid 2/7/10". This would cut the unnecessary columns and make the data more tight and clean.
+
+I also planned to use the "Add columns by fetching URLs" feature so that I can use the longitude and latitude to determine the address of the house.

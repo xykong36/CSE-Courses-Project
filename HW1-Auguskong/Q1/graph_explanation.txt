@@ -1,0 +1,3 @@
+I choosed to use Force Atlas Layout method to create clusters of connections
+And I used the Betweenness Centrality to determine the capacity of the color.
+I used the Degree attribute to adjust the size of the circle.
