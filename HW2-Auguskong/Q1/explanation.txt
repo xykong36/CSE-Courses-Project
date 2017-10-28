@@ -1,0 +1,7 @@
+1.Delete the columns that have no data such as Column G H I J
+
+2. seperate the ten country in 10 different columns so that the table would become balance(the number of rows is almost equal with the number of columns)
+
+3. Merge the same country and year
+
+4. Hide the grid line to make the table look clean 

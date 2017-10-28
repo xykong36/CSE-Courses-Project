@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>scatterplot</title>
+	<script type="text/javascript" src = "../lib/d3.v3.min.js"></script>
+</head>
+
+<style type="text/css">
+	
+	.negativepoint{
+		fill: deepskyblue;
+		stroke: #000;
+		opacity: 0.5;
+	}
+	.positivepoint{
+		fill: none;
+		stroke: red;
+		stroke-width: 2;
+		opacity: 0.5;
+	}
+	
+</style>
+
+<body>
+	<script type="text/javascript">
+	//create the first chart
+		var margin = {top: 20, right: 20, bottom: 30, left: 100},
+		width = 960; 
+		height = 500; 
+
+		//must name the first chart and the second chart differently, or there will have confusion problem
+		var chart1 = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom);
+
+		var chart1_x = d3.scale.linear()
+			.domain([0, 199])
+    		.range([margin.left, width + margin.left]);
+
+		var chart1_y = d3.scale.linear()
+			.domain([0, 846])
+	    	.range([height + margin.top, margin.top]); 
+
+		var chart1_xAxis = d3.svg.axis()
+		    .scale(chart1_x)
+		    .orient("bottom")
+		    .ticks(10);
+
+		var chart1_yAxis = d3.svg.axis()
+		    .scale(chart1_y)
+		    .orient("left")
+		    .ticks(10);
+		//draw the x axis
+		chart1.append("g")
+		   .attr("transform", "translate(0, 520)")
+		   .call(chart1_xAxis);
+
+		//draw the y axis
+		chart1.append("g")
+		   .attr("transform", "translate("+margin.left+", 2)")
+		   .call(chart1_yAxis);
+	
+		d3.csv("diabetes.csv", function(data) {
+  			console.log(data[0]);//use for checking
+  			data.forEach(function(d) {
+		    //transform the string data  to  number data
+		    d.class = +d.class;
+		    d.pregnant_times = +d.pregnant_times;
+		    d.plasma_glucose = +d.plasma_glucose;
+		    d.blood_pressure = +d.blood_pressure;
+		    d.skin_thickness = +d.skin_thickness;
+		    d.insulin = +d.insulin;
+		    d.bmi = +d.bmi;
+		    d.pedigree = +d.pedigree;
+		    d.age = +d.age;
+		    d.class = +d.class; //class value 1 means tested positive for diabetes
+			});
+			console.log(data[0]);
+
+			var negArray = [];
+			var posArray = [];
+			data.forEach(function(d){
+				if (d.class == 1){
+					posArray.push(d);
+				}
+				if (d.class == 0){
+					negArray.push(d);
+				}
+			});
+			console.log(posArray);
+			console.log(posArray[0].class);
+			
+			chart1.selectAll(".point").data(posArray)
+			.enter().append("path")
+			.attr("class", "positivepoint")
+			.attr("d", d3.svg.symbol().type("triangle-up"))
+			.attr("transform", function(d) { return "translate(" +chart1_x(d.plasma_glucose)+ ", " +chart1_y(d.insulin)+ ")";});
+
+			chart1.selectAll(".point").data(negArray)
+				.enter().append("circle")
+				.attr("class", "negativepoint")
+				.attr("r", 3)
+				.attr("cx",  function(d) { return chart1_x(d.plasma_glucose);})
+				.attr("cy", function(d) { return chart1_y(d.insulin);});
+
+			var legend = chart1.append("g")
+							.attr("class", "legend")
+							.attr("transform", "translate(150, 20)")
+							.selectAll("g")
+							.data(["Negative", "Positive"])
+							.enter().append("g");
+
+			//Negative -> circle, Positive -> triangle
+			legend.append("rect")
+			.attr("y", function(d, i){
+				return i * 30;
+			})
+			.attr("fill", function(d){
+				if (d == "Negative"){
+					return "deepskyblue";
+				}
+
+				if(d == "Positive"){
+					return "red";
+				}
+			})
+			.attr("width", 10)
+			.attr("height", 10);
+
+			legend.append("text")
+				  .attr("y", function(d, i){
+				  	return  i * 30 + 10;
+				  })
+				  .attr("x", function(d, i){
+				  	return  20;
+				  })
+				  .text(function(d){
+				  	return d + "  class";
+				  });
+		});
+
+//Create the second scatterplot
+		var margin = {top: 20, right: 20, bottom: 30, left: 100},
+		width = 960; 
+		height = 500; 
+
+		var chart2 = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom);
+
+		var chart2_x = d3.scale.linear()
+			.domain([0, 122])
+    		.range([margin.left, width + margin.left]);
+
+		var chart2_y = d3.scale.linear()
+			.domain([0, 67.1])
+	    	.range([height + margin.top, margin.top]); 
+
+		var chart2_xAxis = d3.svg.axis()
+		    .scale(chart2_x)
+		    .orient("bottom")
+		    .ticks(10);
+
+		var chart2_yAxis = d3.svg.axis()
+		    .scale(chart2_y)
+		    .orient("left")
+		    .ticks(10);
+		//draw the x axis
+		chart2.append("g")
+		   .attr("transform", "translate(0, 520)")
+		   .call(chart2_xAxis);
+
+		//draw the y axis
+		chart2.append("g")
+		   .attr("transform", "translate("+margin.left+", 2)")
+		   .call(chart2_yAxis);
+	
+		d3.csv("diabetes.csv", function(data) {
+  			console.log(data[0]);//use for checking
+  			data.forEach(function(d) {
+		    //transform the string data  to  number data
+		    d.class = +d.class;
+		    d.pregnant_times = +d.pregnant_times;
+		    d.plasma_glucose = +d.plasma_glucose;
+		    d.blood_pressure = +d.blood_pressure;
+		    d.skin_thickness = +d.skin_thickness;
+		    d.insulin = +d.insulin;
+		    d.bmi = +d.bmi;
+		    d.pedigree = +d.pedigree;
+		    d.age = +d.age;
+		    d.class = +d.class; //class value 1 means tested positive for diabetes
+			});
+			console.log(data[0]);
+
+			var negArray = [];
+			var posArray = [];
+			data.forEach(function(d){
+				if (d.class == 1){
+					posArray.push(d);
+				}
+				if (d.class == 0){
+					negArray.push(d);
+				}
+			});
+			console.log(posArray);
+			console.log(posArray[0].class);
+			
+			chart2.selectAll(".point").data(posArray)
+			.enter().append("path")
+			.attr("class", "positivepoint")
+			.attr("d", d3.svg.symbol().type("triangle-up"))
+			.attr("transform", function(d) { return "translate(" +chart2_x(d.blood_pressure)+ ", " +chart2_y(d.bmi)+ ")";});
+
+
+			chart2.selectAll(".point").data(negArray)
+				.enter().append("circle")
+				.attr("class", "negativepoint")
+				.attr("r", 3)
+				.attr("cx",  function(d) { return chart2_x(d.blood_pressure);})
+				.attr("cy", function(d) { return chart2_y(d.bmi);});
+
+			var legend = chart2.append("g")
+							.attr("class", "legend")
+							.attr("transform", "translate(150, 20)")
+							.selectAll("g")
+							.data(["Negative", "Positive"])
+							.enter().append("g");
+
+
+			//Negative -> circle, Positive -> triangle
+			legend.append("rect")
+			.attr("y", function(d, i){
+				return i * 30;
+			})
+			.attr("fill", function(d){
+				if (d == "Negative"){
+					return "deepskyblue";
+				}
+
+				if(d == "Positive"){
+					return "red";
+				}
+			})
+			.attr("width", 10)
+			.attr("height", 10);
+
+			legend.append("text")
+				  .attr("y", function(d, i){
+				  	return  i * 30 + 10;
+				  })
+				  .attr("x", function(d, i){
+				  	return  20;
+				  })
+				  .text(function(d){
+				  	return d + "  class";
+				  });
+		});
+
+		//create the third chart
+		var margin = {top: 20, right: 20, bottom: 30, left: 100},
+		width = 960; 
+		height = 500; 
+
+		//must name the first chart and the second chart differently, or there will have confusion problem
+		var chart3 = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom);
+
+		var chart3_x = d3.scale.linear()
+			.domain([0, 199])
+    		.range([margin.left, width + margin.left]);
+
+		var chart3_y = d3.scale.linear()
+			.domain([0, 846])
+	    	.range([height + margin.top, margin.top]); 
+
+		var chart3_xAxis = d3.svg.axis()
+		    .scale(chart3_x)
+		    .orient("bottom")
+		    .ticks(10);
+
+		var chart3_yAxis = d3.svg.axis()
+		    .scale(chart3_y)
+		    .orient("left")
+		    .ticks(10);
+		//draw the x axis
+		chart3.append("g")
+		   .attr("transform", "translate(0, 520)")
+		   .call(chart3_xAxis);
+
+		//draw the y axis
+		chart3.append("g")
+		   .attr("transform", "translate("+margin.left+", 2)")
+		   .call(chart3_yAxis);
+	
+		d3.csv("diabetes.csv", function(data) {
+  			
+  			data.forEach(function(d) {
+		    //transform the string data  to  number data
+		    d.class = +d.class;
+		    d.pregnant_times = +d.pregnant_times;
+		    d.plasma_glucose = +d.plasma_glucose;
+		    d.blood_pressure = +d.blood_pressure;
+		    d.skin_thickness = +d.skin_thickness;
+		    d.insulin = +d.insulin;
+		    d.bmi = +d.bmi;
+		    d.pedigree = +d.pedigree;
+		    d.age = +d.age;
+		    d.class = +d.class; //class value 1 means tested positive for diabetes
+			});
+
+			var negArray = [];
+			var posArray = [];
+			data.forEach(function(d){
+				if (d.class == 1){
+					posArray.push(d);
+				}
+				if (d.class == 0){
+					negArray.push(d);
+				}
+			});
+			
+			chart3.selectAll(".point").data(posArray)
+			.enter().append("path")
+			.attr("class", "positivepoint")
+			.attr("d", d3.svg.symbol().type("triangle-up").size(function(d) {return (d.plasma_glucose * d.insulin * 0.005 + 10);}))
+			.attr("transform", function(d) { return "translate(" +chart3_x(d.plasma_glucose)+ ", " +chart3_y(d.insulin)+ ")";});
+
+			chart3.selectAll(".point").data(negArray)
+				.enter().append("circle")
+				.attr("class", "negativepoint")
+				.attr("r", function(d) { return (d.plasma_glucose * d.insulin)*0.0001 + 1})
+				.attr("cx",  function(d) { return chart3_x(d.plasma_glucose);})
+				.attr("cy", function(d) { return chart3_y(d.insulin);});
+
+			var legend = chart3.append("g")
+							.attr("class", "legend")
+							.attr("transform", "translate(150, 20)")
+							.selectAll("g")
+							.data(["Negative", "Positive"])
+							.enter().append("g");
+
+			//Negative -> circle, Positive -> triangle
+			legend.append("rect")
+			.attr("y", function(d, i){
+				return i * 30;
+			})
+			.attr("fill", function(d){
+				if (d == "Negative"){
+					return "deepskyblue";
+				}
+
+				if(d == "Positive"){
+					return "red";
+				}
+			})
+			.attr("width", 10)
+			.attr("height", 10);
+
+			legend.append("text")
+				  .attr("y", function(d, i){
+				  	return  i * 30 + 10;
+				  })
+				  .attr("x", function(d, i){
+				  	return  20;
+				  })
+				  .text(function(d){
+				  	return d + "  class";
+				  });
+		});
+
+
+		//create the fourth chart
+		var margin = {top: 20, right: 20, bottom: 30, left: 100},
+		width = 960; 
+		height = 500; 
+
+		//must name the first chart and the second chart differently, or there will have confusion problem
+		var chart4 = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom);
+
+		var chart4_x = d3.scale.linear()
+			.domain([0, 199])
+    		.range([margin.left, width + margin.left]);
+
+		var chart4_y = d3.scale.log()
+			.domain([0.01,846])
+	    	.range([height + margin.top, margin.top]); 
+
+		var chart4_xAxis = d3.svg.axis()
+		    .scale(chart4_x)
+		    .orient("bottom")
+		    .ticks(10);
+
+		var chart4_yAxis = d3.svg.axis()
+		    .scale(chart4_y)
+		    .orient("left")
+		    .ticks(10);
+		//draw the x axis
+		chart4.append("g")
+		   .attr("transform", "translate(0, 520)")
+		   .call(chart4_xAxis);
+
+		//draw the y axis
+		chart4.append("g")
+		   .attr("transform", "translate("+margin.left+", 2)")
+		   .call(chart4_yAxis);
+	
+		d3.csv("diabetes.csv", function(data) {
+  			console.log(data[0]);//use for checking
+  			data.forEach(function(d) {
+		    //transform the string data  to  number data
+		    d.class = +d.class;
+		    d.pregnant_times = +d.pregnant_times;
+		    d.plasma_glucose = +d.plasma_glucose;
+		    d.blood_pressure = +d.blood_pressure;
+		    d.skin_thickness = +d.skin_thickness;
+		    d.insulin = +d.insulin;
+		    d.bmi = +d.bmi;
+		    d.pedigree = +d.pedigree;
+		    d.age = +d.age;
+		    d.class = +d.class; //class value 1 means tested positive for diabetes
+			});
+			console.log(data[0]);
+
+			var negArray = [];
+			var posArray = [];
+			data.forEach(function(d){
+				if (d.class == 1){
+					posArray.push(d);
+				}
+				if (d.class == 0){
+					negArray.push(d);
+				}
+			});
+			console.log(posArray);
+			console.log(posArray[0].class);
+			
+			chart4.selectAll(".point").data(posArray)
+			.enter().append("path")
+			.attr("class", "positivepoint")
+			.attr("d", d3.svg.symbol().type("triangle-up"))
+			.attr("transform", function(d) { return "translate(" +chart4_x(d.plasma_glucose)+ ", " +chart4_y(d.insulin)+ ")";});
+
+			chart4.selectAll(".point").data(negArray)
+				.enter().append("circle")
+				.attr("class", "negativepoint")
+				.attr("r", 3)
+				.attr("cx",  function(d) { return chart1_x(d.plasma_glucose);})
+				.attr("cy", function(d) { return chart1_y(d.insulin);});
+
+			var legend = chart4.append("g")
+							.attr("class", "legend")
+							.attr("transform", "translate(150, 20)")
+							.selectAll("g")
+							.data(["Negative", "Positive"])
+							.enter().append("g");
+
+			//Negative -> circle, Positive -> triangle
+			legend.append("rect")
+			.attr("y", function(d, i){
+				return i * 30;
+			})
+			.attr("fill", function(d){
+				if (d == "Negative"){
+					return "deepskyblue";
+				}
+
+				if(d == "Positive"){
+					return "red";
+				}
+			})
+			.attr("width", 10)
+			.attr("height", 10);
+
+			legend.append("text")
+				  .attr("y", function(d, i){
+				  	return  i * 30 + 10;
+				  })
+				  .attr("x", function(d, i){
+				  	return  20;
+				  })
+				  .text(function(d){
+				  	return d + "  class";
+				  });
+		});
+
+
+		//create the fifth chart
+		var margin = {top: 20, right: 20, bottom: 30, left: 100},
+		width = 960; 
+		height = 500; 
+
+		//must name the first chart and the second chart differently, or there will have confusion problem
+		var chart5 = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom);
+
+		var chart5_x = d3.scale.linear()
+			.domain([0, 199])
+    		.range([margin.left, width + margin.left]);
+
+		var chart5_y = d3.scale.sqrt()
+			.domain([0, 846])
+	    	.range([height + margin.top, margin.top]); 
+
+		var chart5_xAxis = d3.svg.axis()
+		    .scale(chart5_x)
+		    .orient("bottom")
+		    .ticks(10);
+
+		var chart5_yAxis = d3.svg.axis()
+		    .scale(chart5_y)
+		    .orient("left")
+		    .ticks(10);
+		//draw the x axis
+		chart5.append("g")
+		   .attr("transform", "translate(0, 520)")
+		   .call(chart5_xAxis);
+
+		//draw the y axis
+		chart5.append("g")
+		   .attr("transform", "translate("+margin.left+", 2)")
+		   .call(chart5_yAxis);
+	
+		d3.csv("diabetes.csv", function(data) {
+  			console.log(data[0]);//use for checking
+  			data.forEach(function(d) {
+		    //transform the string data  to  number data
+		    d.class = +d.class;
+		    d.pregnant_times = +d.pregnant_times;
+		    d.plasma_glucose = +d.plasma_glucose;
+		    d.blood_pressure = +d.blood_pressure;
+		    d.skin_thickness = +d.skin_thickness;
+		    d.insulin = +d.insulin;
+		    d.bmi = +d.bmi;
+		    d.pedigree = +d.pedigree;
+		    d.age = +d.age;
+		    d.class = +d.class; //class value 1 means tested positive for diabetes
+			});
+			console.log(data[0]);
+
+			var negArray = [];
+			var posArray = [];
+			data.forEach(function(d){
+				if (d.class == 1){
+					posArray.push(d);
+				}
+				if (d.class == 0){
+					negArray.push(d);
+				}
+			});
+			console.log(posArray);
+			console.log(posArray[0].class);
+			
+			chart5.selectAll(".point").data(posArray)
+			.enter().append("path")
+			.attr("class", "positivepoint")
+			.attr("d", d3.svg.symbol().type("triangle-up"))
+			.attr("transform", function(d) { return "translate(" +chart5_x(d.plasma_glucose)+ ", " +chart5_y(d.insulin)+ ")";});
+
+			chart5.selectAll(".point").data(negArray)
+				.enter().append("circle")
+				.attr("class", "negativepoint")
+				.attr("r", 3)
+				.attr("cx",  function(d) { return chart5_x(d.plasma_glucose);})
+				.attr("cy", function(d) { return chart5_y(d.insulin);});
+
+			var legend = chart5.append("g")
+							.attr("class", "legend")
+							.attr("transform", "translate(150, 20)")
+							.selectAll("g")
+							.data(["Negative", "Positive"])
+							.enter().append("g");
+
+			//Negative -> circle, Positive -> triangle
+			legend.append("rect")
+			.attr("y", function(d, i){
+				return i * 30;
+			})
+			.attr("fill", function(d){
+				if (d == "Negative"){
+					return "deepskyblue";
+				}
+
+				if(d == "Positive"){
+					return "red";
+				}
+			})
+			.attr("width", 10)
+			.attr("height", 10);
+
+			legend.append("text")
+				  .attr("y", function(d, i){
+				  	return  i * 30 + 10;
+				  })
+				  .attr("x", function(d, i){
+				  	return  20;
+				  })
+				  .text(function(d){
+				  	return d + "  class";
+				  });
+		});
+
+	</script>
+	
+</body>
+</html>

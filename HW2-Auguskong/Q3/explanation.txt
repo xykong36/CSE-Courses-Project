@@ -1,0 +1,4 @@
+A.2 I thinkt the Feature2(plasma glucose)/Feature5(insulin) scatterplot can separate the classes betterbecause this plot shows that the positive classes tend to locate at the rightpart of the plot while the negative classes tend to locate at the left
+part.
+
+C. I think we can use the sqrt and log scale when the data set span is pretty large, because by doing this we can seperate the data in different order.

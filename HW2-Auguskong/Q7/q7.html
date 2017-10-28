@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript", src="../lib/d3.v3.min.js"></script>
+    <script type="text/javascript", src="../lib/topojson.v1.min.js"></script>
+    <script type="text/javascript", src="../lib/d3-queue.v3.min.js"></script>
+    <script type="text/javascript", src="../lib/d3.tip.v0.6.3.js"></script>
+    <title>choropleth map</title>
+    <style>
+
+    .title{
+      font-family: Arial;
+      font-size: 20px;
+    }
+    .state-borders {
+      fill: none;
+      stroke: black;
+      stroke-width: 2px;
+    }
+
+    .tip {
+      background: black;
+      color: white;
+      font-size: 14px;
+      border-radius: 5px;
+      padding: 8px;
+    }
+
+</style>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", 1000)
+            .attr("height", 700);
+
+var width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var path = d3.geo.path();
+var county_name = [];
+var county_median_age = [];
+
+var tip = d3.tip()
+            .attr('class', 'tip')
+            .offset([20, 0])
+            .html(function(d) {
+
+              var output = "";
+              for (i = 0; i < county_name.length; i++){
+                output = output + county_name[i] + " (Age:" + county_median_age[i] + ")" + "<br/>";
+                //only show the top five counties in this state
+                if (i == 4) 
+                  break;
+              }
+              return output;//return the series of lines
+            });
+
+
+
+
+//Establish a queue, 
+d3.queue()
+  .defer(d3.json, "us.json")
+  .defer(d3.json, "median_earnings.json")
+  .defer(d3.csv,"median_ages.csv")
+  .await(ready);
+
+//Set the color of the states on the map according to the median_earnings in the state.
+function ready(error, us, median_earnings, median_ages) {
+  //something wrong, then error
+  if (error) throw error;
+
+  var mEarningsById = {};
+  var mEcolorScale = [];
+
+  median_ages.forEach(function(d){
+    d.median_age = +d.median_age;
+  });
+
+  median_earnings.forEach(function(d) { 
+    mEarningsById[d.id] = +d.median_earnings; 
+    mEcolorScale.push(+d.median_earnings);
+  });
+
+  var min_color = "#FCFBFD", max_color = "#4A1486";
+
+  var color = d3.scale.linear()
+                .domain([10000,36000])
+                .range([min_color, max_color]);
+ 
+  svg.append("g")
+     .attr("transform", "translate(" + 0 + "," + 30 + ")")
+     .attr("class", "states")
+     .selectAll("path")
+     .data(topojson.feature(us, us.objects.states).features)
+     .enter().append("path")
+     .attr("d", path)
+     .style("fill", function(d) { return color(mEarningsById[d.id]); })
+
+//set the border
+  svg.append("path")
+     .attr("transform", "translate(" + 0+ "," + 30+ ")")
+     .attr("class", "state-borders")
+     .attr("d", path(topojson.mesh(us, us.objects.states)));
+
+  svg.data(topojson.feature(us, us.objects.states).features)
+    .on("mouseover", function(d){
+    median_filter = median_ages.filter(function(row){ return row.id == d.id; });
+    sort_age = median_filter.sort(function(x,y){ return d3.ascending(x.median_age, y.median_age); });
+    
+    sort_age.forEach(function(d){
+      county_name.push(d.name);
+      county_median_age.push(d.median_age);
+    });
+
+    tip.show(d);
+  })
+  svg.call(tip);
+  svg.on("mouseout", function(){
+        county_name = [];
+        county_median_age = [];
+        tip.hide();
+  });
+
+  svg.append("text")
+      .attr("class", "title")
+      .attr("x", 400)
+      .attr("y", 50)
+      .attr("dy", ".10em")
+      .text("Median Earning by State");
+
+  var legend = svg.selectAll(".legend")
+                  .data(color.ticks(6))
+                  .enter().append("g")
+                  .attr("class", "legend")
+                  .attr("transform", function(d, i) { return "translate(" + (width - 100) + "," + (height - 300 +20 + i * 20) + ")"; });
+
+      legend.append("rect")
+            .attr("width", 20)
+            .attr("height", 20)
+            .style("fill", color);
+
+      legend.append("text")
+          .attr("x", 25)
+          .attr("y", 10)
+          .attr("dy", ".25em")
+          .text(function(d){ return "$" + d; }); 
+}
+
+    </script>
+    
+</body>
+</html>

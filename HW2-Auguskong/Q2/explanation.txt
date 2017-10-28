@@ -1,0 +1,2 @@
+I choose the scale the node size linearly, because the linear size is very 
+clear and neat to represent the degree of the node.
