@@ -1,0 +1,41 @@
+Quesiton 1.
+---------------
+split ratio: 0.75
+Mean Absolute Error	1656.147651
+Root Mean Squared Error	2456.983209
+Relative Absolute Error	0.276606
+Relative Squared Error	0.089608
+Coefficient of Determination	0.910392
+
+Question 2.
+---------------
+split ratio: 0.9
+Mean Absolute Error	1265.001752
+Root Mean Squared Error	1783.328763
+Relative Absolute Error	0.253181
+Relative Squared Error	0.067781
+Coefficient of Determination	0.932219
+
+Question 3.
+----------------
+Using Decision Tree Regression results
+Mean Absolute Error	1138.237099
+Root Mean Squared Error	1644.749948
+Relative Absolute Error	0.22781
+Relative Squared Error	0.057656
+Coefficient of Determination	0.942344
+
+Neural Network Regression results
+Mean Absolute Error	5610.083882
+Root Mean Squared Error	7146.196375
+Relative Absolute Error	1.122818
+Relative Squared Error	1.08842
+Coefficient of Determination	-0.08842
+
+Bayesian Linear Regression Results
+Mean Absolute Error	1144.4765
+Root Mean Squared Error	1893.346891
+Relative Absolute Error	0.229059
+Relative Squared Error	0.076402
+Coefficient of Determination  0.923598
+

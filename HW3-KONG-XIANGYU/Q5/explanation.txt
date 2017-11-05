@@ -1,0 +1,2 @@
+
+I changed the model to predict the the price and get different results, because the different model fit for different problem. The prediction result of Decision Tree is good while the result of nerual network is bad, because  Decision Tree is very suitable for predictive and the neural network is used to find pattern in data.

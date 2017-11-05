@@ -1,0 +1,6 @@
+Approach: Using reflection to get two Dataframes, one for incoming and the other for outgoing. Use filter operation to get the value that the outweight and inweight both larger than 5.
+
+Use toDF to generate the dataFramen and name the column and calculate the total inedges weight and outedges weight for every node, then join the two Dataframe to calculate the difference between the incoming and outgoiing.
+
+Line 21: generate the DataFrame
+Line 23: calculate the Result
